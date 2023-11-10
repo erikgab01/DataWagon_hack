@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+[hidden] {
+    visibility: hidden !important;
+}
+
+.cell--repair {
+    background-color: #d84d80;
+}
+
+/*.row--repair:hover {
+    background-color: #e288a9 !important;
+} */
+
+.cell--healthy {
+    background-color: #138167;
+}
+
+/*.row--healthy:hover {
+    background-color: #56b7a1 !important;
+} */
+
+.file-label {
+    cursor: pointer;
+}
