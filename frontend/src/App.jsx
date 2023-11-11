@@ -18,20 +18,6 @@ const initialRows = [
         statusMonth: "Неизвестно",
         statusDays: "Неизвестно",
     },
-    {
-        id: randomId(),
-        wagnum: 33364,
-        date: new Date("2023-03-01"),
-        statusMonth: "Ремонт",
-        statusDays: "Неизвестно",
-    },
-    {
-        id: randomId(),
-        wagnum: 33366,
-        date: new Date("2023-03-01"),
-        statusMonth: "В порядке",
-        statusDays: "Неизвестно",
-    },
 ];
 
 function App() {
