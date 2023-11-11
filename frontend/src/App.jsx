@@ -53,7 +53,7 @@ function App() {
             newData = newData.map((row) => ({
                 id: randomId(),
                 wagnum: row.wagnum,
-                date: new Date(row.month),
+                date: new Date("2023-03-01"),
                 statusMonth: row.target_month == 1 ? "Ремонт" : "В порядке",
                 statusDays: row.target_day == 1 ? "Ремонт" : "В порядке",
             }));
@@ -79,7 +79,7 @@ function App() {
                     rows = rows.map((row) => ({
                         id: randomId(),
                         wagnum: row.wagnum,
-                        date: new Date(row.month),
+                        date: new Date("2023-03-01"),
                         statusMonth: "Неизвестно",
                         statusDays: "Неизвестно",
                     }));

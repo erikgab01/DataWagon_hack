@@ -125,7 +125,6 @@ export default function Table({ rows, setRows, predict, readFromCSV, exportToCSV
             width: 200,
             align: "center",
             headerAlign: "center",
-            editable: true,
         },
         {
             field: "statusMonth",

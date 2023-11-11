@@ -25,3 +25,7 @@
 .file-label {
     cursor: pointer;
 }
+
+.MuiDataGrid-row--editing .MuiDataGrid-cell {
+    color: black;
+}
