@@ -105,7 +105,12 @@ export default function Table({ rows, setRows, predict, readFromCSV, exportToCSV
     };
 
     const processRowUpdate = (newRow) => {
-        const updatedRow = { ...newRow, isNew: false };
+        const updatedRow = {
+            ...newRow,
+            statusMonth: "Неизвестно",
+            statusDays: "Неизвестно",
+            isNew: false,
+        };
         setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
         return updatedRow;
     };
