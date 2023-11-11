@@ -24,7 +24,13 @@ function EditToolbar({ setRows, setRowModesModel, predict, readFromCSV, exportTo
         const id = randomId();
         setRows((oldRows) => [
             ...oldRows,
-            { id, isNew: true, statusMonth: "Неизвестно", statusDays: "Неизвестно" },
+            {
+                id,
+                isNew: true,
+                date: new Date("2023-03-01"),
+                statusMonth: "Неизвестно",
+                statusDays: "Неизвестно",
+            },
         ]);
         setRowModesModel((oldModel) => ({
             ...oldModel,
