@@ -17,8 +17,9 @@ import TroubleshootIcon from "@mui/icons-material/Troubleshoot";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import { randomId } from "@mui/x-data-grid-generator";
+import { CircularProgress } from "@mui/material";
 
-function EditToolbar({ setRows, setRowModesModel, predict, readFromCSV, exportToCSV }) {
+function EditToolbar({ setRows, setRowModesModel, predict, readFromCSV, exportToCSV, isLoading }) {
     const handleClick = () => {
         const id = randomId();
         setRows((oldRows) => [
@@ -53,14 +54,18 @@ function EditToolbar({ setRows, setRowModesModel, predict, readFromCSV, exportTo
             <Button color="primary" startIcon={<FileDownloadIcon />} onClick={exportToCSV}>
                 Экспорт в CSV
             </Button>
-            <Button color="primary" startIcon={<TroubleshootIcon />} onClick={predict}>
+            <Button
+                color="primary"
+                startIcon={isLoading ? <CircularProgress size={16} /> : <TroubleshootIcon />}
+                onClick={predict}
+            >
                 Прогнозировать ремонт
             </Button>
         </GridToolbarContainer>
     );
 }
 
-export default function Table({ rows, setRows, predict, readFromCSV, exportToCSV }) {
+export default function Table({ rows, setRows, predict, readFromCSV, exportToCSV, isLoading }) {
     const [rowModesModel, setRowModesModel] = useState({});
 
     const handleRowEditStop = (params, event) => {
@@ -232,7 +237,14 @@ export default function Table({ rows, setRows, predict, readFromCSV, exportToCSV
                     toolbar: EditToolbar,
                 }}
                 slotProps={{
-                    toolbar: { setRows, setRowModesModel, predict, readFromCSV, exportToCSV },
+                    toolbar: {
+                        setRows,
+                        setRowModesModel,
+                        predict,
+                        readFromCSV,
+                        exportToCSV,
+                        isLoading,
+                    },
                 }}
                 /*getRowClassName={(params) =>
                     params.row.status ? `row--${params.row.status.toLowerCase()}` : ""

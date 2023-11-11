@@ -8,6 +8,7 @@ import { ruRU } from "@mui/x-data-grid";
 import { ThemeProvider } from "@emotion/react";
 import { read, utils, writeFile } from "xlsx";
 import axios from "axios";
+import Charts from "./Charts";
 
 const initialRows = [
     {
@@ -36,8 +37,10 @@ const initialRows = [
 function App() {
     const [data, setData] = useState(initialRows);
     const [activePage, setActivePage] = useState("table");
+    const [isLoading, setIsLoading] = useState(false);
     async function predict() {
         // Send request, get response, update data
+        setIsLoading(true);
         try {
             console.log(import.meta.env);
             const response = await axios.post(
@@ -61,7 +64,7 @@ function App() {
             console.log("Connection error: ", error);
         }
 
-        return;
+        setIsLoading(false);
     }
 
     function readFromCSV(event) {
@@ -126,9 +129,11 @@ function App() {
                             predict={predict}
                             readFromCSV={readFromCSV}
                             exportToCSV={exportToCSV}
+                            isLoading={isLoading}
                         />
                     )}
                     {activePage == "info" && <Info />}
+                    {activePage == "plot" && <Charts initialData={data} />}
                 </Container>
             </Layout>
         </ThemeProvider>

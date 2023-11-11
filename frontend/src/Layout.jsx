@@ -18,6 +18,9 @@ export default function Layout({ children, setActivePage }) {
                         <Button onClick={() => setActivePage("table")} sx={{ color: "white" }}>
                             Прогнозирование
                         </Button>
+                        <Button onClick={() => setActivePage("plot")} sx={{ color: "white" }}>
+                            Графики
+                        </Button>
                         <Button onClick={() => setActivePage("info")} sx={{ color: "white" }}>
                             Дополнительная информация
                         </Button>
