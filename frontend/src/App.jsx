@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Layout from "./Layout";
 import Table from "./Table";
+import Info from "./Info";
 import { randomId } from "@mui/x-data-grid-generator";
 import { Container, CssBaseline, createTheme } from "@mui/material";
 import { ruRU } from "@mui/x-data-grid";
@@ -34,13 +35,22 @@ const initialRows = [
 
 function App() {
     const [data, setData] = useState(initialRows);
+    const [activePage, setActivePage] = useState("table");
     async function predict() {
         // Send request, get response, update data
-        const response = await axios.post(
-            "http://127.0.0.1:8000/api/predict",
-            data.map((row) => ({ wagnum: row.wagnum, month: row.date.toISOString().split("T")[0] }))
-        );
-        console.log(response);
+        try {
+            console.log(import.meta.env);
+            const response = await axios.post(
+                `api/predict`,
+                data.map((row) => ({
+                    wagnum: row.wagnum,
+                    month: row.date.toISOString().split("T")[0],
+                }))
+            );
+            console.log(response);
+        } catch (error) {
+            console.log("Connection error: ", error);
+        }
 
         return;
     }
@@ -98,15 +108,18 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Layout>
+            <Layout setActivePage={setActivePage}>
                 <Container maxWidth="lg">
-                    <Table
-                        rows={data}
-                        setRows={setData}
-                        predict={predict}
-                        readFromCSV={readFromCSV}
-                        exportToCSV={exportToCSV}
-                    />
+                    {activePage == "table" && (
+                        <Table
+                            rows={data}
+                            setRows={setData}
+                            predict={predict}
+                            readFromCSV={readFromCSV}
+                            exportToCSV={exportToCSV}
+                        />
+                    )}
+                    {activePage == "info" && <Info />}
                 </Container>
             </Layout>
         </ThemeProvider>

@@ -6,6 +6,7 @@
 
 .cell--repair {
     background-color: #d84d80;
+    color: white;
 }
 
 /*.row--repair:hover {
@@ -14,6 +15,7 @@
 
 .cell--healthy {
     background-color: #138167;
+    color: white;
 }
 
 /*.row--healthy:hover {
