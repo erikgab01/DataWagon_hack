@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 
 export default function Info() {
     return (
@@ -9,45 +9,33 @@ export default function Info() {
         >
             <Typography
                 component="h1"
-                variant="h2"
+                variant="h4"
                 align="center"
                 color="text.primary"
                 gutterBottom
             >
-                Результаты исследования
+                Портрет типичного вагона, который часто ремонтируется
             </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit modi animi
-                explicabo tempore libero quam tenetur earum velit dolorum, cumque magni nihil
-                doloribus, ab iure voluptas, cum ut reiciendis asperiores. Aliquam eligendi aperiam
-                sapiente fugit! Numquam delectus corrupti corporis animi maiores repellendus
-                excepturi praesentium dignissimos, commodi voluptates dolore optio, tenetur,
-                possimus laboriosam fugiat non ex. Deleniti quos fugiat libero laudantium? Commodi a
-                excepturi dolor quia reiciendis blanditiis quae, repudiandae quos eius odio modi
-                dolores veritatis nobis exercitationem. Ipsum unde nobis quam adipisci sint,
-                perspiciatis, necessitatibus doloremque, facere nihil rem quas! Quisquam delectus
-                atque voluptatibus officia sint vel, reprehenderit assumenda quibusdam provident
-                eaque dolorem aliquid praesentium maxime nam quia corrupti fugit asperiores in ut
-                necessitatibus? Distinctio repudiandae repellat nam atque necessitatibus? Autem
-                neque ipsum maiores quos dignissimos vitae, libero doloribus deserunt sunt modi
-                voluptatibus temporibus asperiores placeat quisquam distinctio? Neque nemo
-                voluptatibus doloremque veritatis hic dolor natus, vel amet numquam consequuntur.
-                Repellendus at totam eius doloremque, dolor delectus sapiente accusamus. Iste
-                repellendus ipsam corporis nam temporibus et consectetur, nihil fugit delectus amet,
-                minima aperiam sunt cum? Illum ratione repellat repudiandae aperiam! Eaque quas
-                incidunt sit impedit modi aspernatur minus, hic ea explicabo, molestias magni
-                beatae, ipsum labore dolor nobis iste facere dicta? Repudiandae, perspiciatis?
-                Deserunt aliquam repellendus hic voluptates aliquid soluta? Minus maiores quibusdam
-                perspiciatis porro illum repellendus vero necessitatibus et cumque quidem blanditiis
-                quisquam placeat similique numquam repellat, ad nam laudantium magni at sit laborum
-                minima est nesciunt molestias? Odio? Minus minima impedit sint ratione dolore!
-                Deserunt, sed debitis! Et inventore qui expedita similique! Adipisci error maiores
-                consequatur. Aut quasi, corporis consectetur molestias sint laboriosam rem minus id
-                atque ab. Consequuntur at possimus cumque alias placeat repudiandae nihil maiores
-                qui exercitationem blanditiis aut, voluptatem quod repellat! Voluptatum corporis
-                possimus, recusandae aperiam, molestiae dicta maxime suscipit quas earum enim, odio
-                ipsa.
-            </Typography>
+            <List sx={{ listStyle: "decimal", px: 6 }}>
+                <ListItem sx={{ display: "list-item" }}>
+                    <ListItemText primary="Остаточный пробег такого поезда сверхмалый - не превышает 5 тыс. км, либо же, наоборот, сверхвысокий - от 100 до 150 тыс. км. " />
+                </ListItem>
+                <ListItem sx={{ display: "list-item" }}>
+                    <ListItemText primary="Пробег в груженном состоянии составляет либо менее 25 тыс. км, либо от 75 тыс. км и более" />
+                </ListItem>
+                <ListItem sx={{ display: "list-item" }}>
+                    <ListItemText primary="Вагоны, переданные в аренду, приходят в неисправность в 1.5 раза чаще" />
+                </ListItem>
+                <ListItem sx={{ display: "list-item" }}>
+                    <ListItemText primary="Вагоны с типом РПС, имеющим значение 0, в 2.3 раза реже отправляются в ремонт, нежели со значением типа РПС, равным 1" />
+                </ListItem>
+                <ListItem sx={{ display: "list-item" }}>
+                    <ListItemText primary='У 10% или более вагонов моделей "12-295", "12-296-01", "12-9788-01", "12-1301-01", "12-600-05", "12-1704-04" и "12-9780" найдены неисправности, в то время как у остальных моделей обнаружены неисправности около у 5% вагонов' />
+                </ListItem>
+                <ListItem sx={{ display: "list-item" }}>
+                    <ListItemText primary="Заводы 16, 19 и 6 выпускают наивысший среди всех процент вагонов, отправленных в ремонт - 15%, 13% и 11% соответственно." />
+                </ListItem>
+            </List>
         </Box>
     );
 }
