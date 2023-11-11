@@ -48,6 +48,15 @@ function App() {
                 }))
             );
             console.log(response);
+            let newData = response.data.data;
+            newData = newData.map((row) => ({
+                id: randomId(),
+                wagnum: row.wagnum,
+                date: new Date(row.month),
+                statusMonth: row.target_month == 1 ? "Ремонт" : "В порядке",
+                statusDays: row.target_day == 1 ? "Ремонт" : "В порядке",
+            }));
+            setData(newData);
         } catch (error) {
             console.log("Connection error: ", error);
         }

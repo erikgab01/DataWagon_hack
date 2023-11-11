@@ -1,14 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import csv
 import pandas as pd
+from ml_script import Solution 
 
 class PredictPayload(BaseModel):
     wagnum: int = 0
     month: str = ""
 
 app = FastAPI()
+
+SOLUTION = Solution()
 
 app.add_middleware(
     CORSMiddleware,
@@ -26,7 +28,9 @@ def upload(payload: list[PredictPayload]):
             data.append(row.model_dump())
         df = pd.DataFrame(data) 
         df.to_csv("data.csv", index=False)
+        result = SOLUTION.predict("data.csv")
+        return {
+            "data": result
+        }
     except Exception:
-        return {"message": "There was an error on the server"}
-
-    return {"message": "Recieved data"}
+        return {"message": f"There was an error on the server"}
