@@ -42,7 +42,6 @@ function App() {
         // Send request, get response, update data
         setIsLoading(true);
         try {
-            console.log(import.meta.env);
             const response = await axios.post(
                 `api/predict`,
                 data.map((row) => ({
@@ -50,7 +49,6 @@ function App() {
                     month: row.date.toISOString().split("T")[0],
                 }))
             );
-            console.log(response);
             let newData = response.data.data;
             newData = newData.map((row) => ({
                 id: randomId(),
